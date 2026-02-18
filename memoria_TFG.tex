@@ -1,23 +1,23 @@
+% **************************************************
+% * Opciones de clase y globales
+% **************************************************
 \documentclass[%
-    paper=A4,               % Tamaño de papel A4.
-    twoside,                % Páxinas pares e impares con deseño diferenciado.
-    parskip=full,           % Renglón libre entre parágrafos.
-    10pt,                   % Tamaño de fonte. Non inferior a 10 puntos. 
-    titlepage=on,           % Páxina independente para o título
-    captions=tableabove,    % Os títulos das táboas na parte superior
-]{article}                  % Baseado no tipo "article" 
+    paper=A4,               % Tamaño de papel A4
+    twoside,                % Páginas pares e impares con diseño diferenciado
+    parskip=full,           % Renglón libre entre párrafos
+    10pt,                   % Tamaño de fuente. No inferior a 10 puntos.
+    titlepage=on,           % Página independiente para el título
+    captions=tableabove,    % Los títulos de las tablas en la parte superior
+]{article}                  % Basado en el tipo "article" 
 
 % **************************************************
-% * Idioma: galician, spanish, english
+% * Idioma y paquete de formato
 % **************************************************
 \usepackage[spanish]{babel}
-
 \usepackage{tfgteleco}
-\usepackage{lipsum}
-
 
 % **************************************************
-% * Datos para a portada do TFG
+% * Datos para la portada del TFG
 % **************************************************
 \title{Diseño y desarrollo de una funcionalidad de búsqueda y filtrado de cursos en el catálogo de cursos en línea}
 \author{Aarón Riveiro Vilar}
@@ -25,34 +25,34 @@
 \curso{2025/2026}
 
 % **************************************************
-% * Cabeceiras (opcionais). Actívanse con "true" 
+% * Cabeceras (opcionales)
 % **************************************************
 \cabeceiras{true}
 
 % **************************************************
-% * Inicio do documento
+% * Inicio del documento
 % **************************************************
 \begin{document}
 
 \maketitle
 % **************************************************
-% * Táboa de contidos (Opcional)
+% * Tábla de contenidos (opcional)
 % **************************************************
 \tableofcontents
 \clearpage
 
 % **************************************************
-% * Inicio de contidos
+% * Inicio de contenidos
 % **************************************************
 
-\section{Introdución}
-O documento do TFG debe estar estruturado como un informe de non máis de 20 páxinas (incluíndo táboas e gráficas e a portada establecida) seguido de tantos apéndices coma sexa necesario para que a memoria final sexa o máis autocontida posible.  
+\section{Introducción}
+O documento do TFG debe estar estruturado como un informe de non máis de 20 páxinas (incluíndo táboas e gráficas e a portada establecida) seguido de tantos apéndices coma sexa necesario para que a memoria final sexa o máis autocontida posible.
 
 As entradas da bibliografía compoñeranse utilizando o utilizando o estilo de citas do IEEE \cite{goossens1994latex} ou o estilo de citas Harvard. Cada entrada debe conter información suficiente para localizar directamente os autores do documento, o título, a publicación que o contén e o ano de publicación. No caso do documentos electrónicos, incluirase unha URL válida para o acceso ao mesmo e a data de consulta do documento.
 
 Introdución ao problema.
 
-\subsection{Obxectivos}
+\subsection{Objetivos}
 Descripción dos obxectivos do TFG.
 
 A Figura \ref{fig:exemplo} é un exemplo de como incorporar unha figura.
@@ -67,43 +67,38 @@ A Figura \ref{fig:exemplo} é un exemplo de como incorporar unha figura.
 \subsection{Metodoloxía}
 Metodoloxía seguida
 
-% TEXTO DE RECHEO PARA EXEMPLO: Borrar
-\textcolor{gray}{ \newline \it
-\lipsum[1-2]
-}
-
 \section{Situación actual}
 Análise de necesidades e estudio do estado da arte.
 
 O Cadro \ref{table:exemplo} mostra un exemplo de táboa (existen moitos máis estilos e contornos).
 
 \begin{table}[h!]
-\caption{Táboa de exemplo}
-\label{table:exemplo}
-\centering
-\begin{tabular}{ |p{6cm}|p{4cm}|p{4cm}|  }
-\hline
-\multicolumn{3}{|c|}{Country List} \\
-\hline
-Country Name or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 \\
-\hline
-Afghanistan & AF &AFG \\
-Aland Islands & AX   & ALA \\
-Albania &AL & ALB \\
-Algeria    &DZ & DZA \\
-American Samoa & AS & ASM \\
-Andorra & AD & AND   \\
-Angola & AO & AGO \\
-\hline
-\end{tabular}
+    \caption{Tabla de ejemplo}
+    \label{table:exemplo}
+    \centering
+    \begin{tabular}{ |p{6cm}|p{4cm}|p{4cm}|  }
+        \hline
+        \multicolumn{3}{|c|}{Country List}                         \\
+        \hline
+        Country Name or Area Name & ISO ALPHA 2 Code & ISO ALPHA 3 \\
+        \hline
+        Afghanistan               & AF               & AFG         \\
+        Aland Islands             & AX               & ALA         \\
+        Albania                   & AL               & ALB         \\
+        Algeria                   & DZ               & DZA         \\
+        American Samoa            & AS               & ASM         \\
+        Andorra                   & AD               & AND         \\
+        Angola                    & AO               & AGO         \\
+        \hline
+    \end{tabular}
 \end{table}
 
-\section{Deseño}
+\section{Diseño}
 Decisións técnicas tomadas, incluíndo o uso de estándares ou normativas ou xustificando a súa ausencia.
 
-O Listado \ref{listado:exemplo} mostra un exemplo de código Python.
+O Listado \ref{listado:exemplo} mostra un ejemplo de código Python.
 
-\begin{lstlisting}[language=Python, caption=Exemplo en Python, label=listado:exemplo]
+\begin{lstlisting}[language=Python, caption=Ejemplo en Python, label=listado:exemplo]
 import numpy as np
     
 def incmatrix(genl1,genl2):
@@ -138,18 +133,8 @@ def incmatrix(genl1,genl2):
 \section{Resultados}
 Resultados acadados, xustificando os motivos polos que non se poido lograr a consecución de tódolos obxectivos (de ser o caso).
 
-% TEXTO DE RECHEO PARA EXEMPLO: Borrar
-\textcolor{gray}{ \newline \it
-\lipsum[6]
-}
-
-\section{Conclusións}
+\section{Conclusiones}
 Discusión e conclusións. Valorando, de ser o caso, o impacto en aspectos de responsabilidade legal, ética e profesional relacionados co TFG (por exemplo, aspectos relacionados coa privacidade, a seguridade, etc.).
-
-% TEXTO DE RECHEO PARA EXEMPLO: Borrar
-\textcolor{gray}{ \newline \it
-\lipsum[7]
-}
 
 % **************************************************
 % * Bibliografía
@@ -159,7 +144,7 @@ Discusión e conclusións. Valorando, de ser o caso, o impacto en aspectos de re
 % * As referencias en BibTeX pódense extraer 
 % * por exemplo de Google Scholar
 % **************************************************
-\bibliographystyle{IEEEtran} 
+\bibliographystyle{IEEEtran}
 \bibliography{references}
 
 \clearpage
