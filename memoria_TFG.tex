@@ -1,0 +1,170 @@
+\documentclass[%
+    paper=A4,               % Tamaño de papel A4.
+    twoside,                % Páxinas pares e impares con deseño diferenciado.
+    parskip=full,           % Renglón libre entre parágrafos.
+    10pt,                   % Tamaño de fonte. Non inferior a 10 puntos. 
+    titlepage=on,           % Páxina independente para o título
+    captions=tableabove,    % Os títulos das táboas na parte superior
+]{article}                  % Baseado no tipo "article" 
+
+% **************************************************
+% * Idioma: galician, spanish, english
+% **************************************************
+\usepackage[spanish]{babel}
+
+\usepackage{tfgteleco}
+\usepackage{lipsum}
+
+
+% **************************************************
+% * Datos para a portada do TFG
+% **************************************************
+\title{Diseño y desarrollo de una funcionalidad de búsqueda y filtrado de cursos en el catálogo de cursos en línea}
+\author{Aarón Riveiro Vilar}
+\titores{Manuel Caeiro Rodríguez}
+\curso{2025/2026}
+
+% **************************************************
+% * Cabeceiras (opcionais). Actívanse con "true" 
+% **************************************************
+\cabeceiras{true}
+
+% **************************************************
+% * Inicio do documento
+% **************************************************
+\begin{document}
+
+\maketitle
+% **************************************************
+% * Táboa de contidos (Opcional)
+% **************************************************
+\tableofcontents
+\clearpage
+
+% **************************************************
+% * Inicio de contidos
+% **************************************************
+
+\section{Introdución}
+O documento do TFG debe estar estruturado como un informe de non máis de 20 páxinas (incluíndo táboas e gráficas e a portada establecida) seguido de tantos apéndices coma sexa necesario para que a memoria final sexa o máis autocontida posible.  
+
+As entradas da bibliografía compoñeranse utilizando o utilizando o estilo de citas do IEEE \cite{goossens1994latex} ou o estilo de citas Harvard. Cada entrada debe conter información suficiente para localizar directamente os autores do documento, o título, a publicación que o contén e o ano de publicación. No caso do documentos electrónicos, incluirase unha URL válida para o acceso ao mesmo e a data de consulta do documento.
+
+Introdución ao problema.
+
+\subsection{Obxectivos}
+Descripción dos obxectivos do TFG.
+
+A Figura \ref{fig:exemplo} é un exemplo de como incorporar unha figura.
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/logo_uvigo.pdf}
+    \caption{Figura de exemplo}
+    \label{fig:exemplo}
+\end{figure}
+
+\subsection{Metodoloxía}
+Metodoloxía seguida
+
+% TEXTO DE RECHEO PARA EXEMPLO: Borrar
+\textcolor{gray}{ \newline \it
+\lipsum[1-2]
+}
+
+\section{Situación actual}
+Análise de necesidades e estudio do estado da arte.
+
+O Cadro \ref{table:exemplo} mostra un exemplo de táboa (existen moitos máis estilos e contornos).
+
+\begin{table}[h!]
+\caption{Táboa de exemplo}
+\label{table:exemplo}
+\centering
+\begin{tabular}{ |p{6cm}|p{4cm}|p{4cm}|  }
+\hline
+\multicolumn{3}{|c|}{Country List} \\
+\hline
+Country Name or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 \\
+\hline
+Afghanistan & AF &AFG \\
+Aland Islands & AX   & ALA \\
+Albania &AL & ALB \\
+Algeria    &DZ & DZA \\
+American Samoa & AS & ASM \\
+Andorra & AD & AND   \\
+Angola & AO & AGO \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Deseño}
+Decisións técnicas tomadas, incluíndo o uso de estándares ou normativas ou xustificando a súa ausencia.
+
+O Listado \ref{listado:exemplo} mostra un exemplo de código Python.
+
+\begin{lstlisting}[language=Python, caption=Exemplo en Python, label=listado:exemplo]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+
+\section{Resultados}
+Resultados acadados, xustificando os motivos polos que non se poido lograr a consecución de tódolos obxectivos (de ser o caso).
+
+% TEXTO DE RECHEO PARA EXEMPLO: Borrar
+\textcolor{gray}{ \newline \it
+\lipsum[6]
+}
+
+\section{Conclusións}
+Discusión e conclusións. Valorando, de ser o caso, o impacto en aspectos de responsabilidade legal, ética e profesional relacionados co TFG (por exemplo, aspectos relacionados coa privacidade, a seguridade, etc.).
+
+% TEXTO DE RECHEO PARA EXEMPLO: Borrar
+\textcolor{gray}{ \newline \it
+\lipsum[7]
+}
+
+% **************************************************
+% * Bibliografía
+% **************************************************
+% * Débese completar no ficheiro "references.bib" 
+% * incluíndo alí as entradas en formato BibTeX. 
+% * As referencias en BibTeX pódense extraer 
+% * por exemplo de Google Scholar
+% **************************************************
+\bibliographystyle{IEEEtran} 
+\bibliography{references}
+
+\clearpage
+\appendix
+\section{Anexos técnicos}
+Anexos técnicos que incorporen información adicional para calquera dos epígrafes anteriores ou incorporando aspectos novos que teñan relevancia para o traballo realizado (por exemplo, apartados propios das normas UNE 157001:2014 e UNE-ISO 21500:2013, se procede).
+
+\end{document}
