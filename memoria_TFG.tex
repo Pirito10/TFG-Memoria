@@ -132,6 +132,15 @@ Se entiende por requisito funcional aquel que describe las capacidades concretas
 % * Integración y rendimiento
 % **************************************************
 \subsubsection{Integración y rendimiento}
+\begin{enumerate}
+    \item La solución propuesta debe integrarse con la plataforma existente sin alterar la estructura fundamental del modelo de datos ni comprometer el funcionamiento del resto de funcionalidades del sistema.
+    \item El sistema debe ser compatible con la arquitectura actual basada en Drupal y con los módulos utilizados para la gestión del contenido, garantizando que la mejora del mecanismo de búsqueda y filtrado no requiera una reimplementación completa del entorno.
+    \item La implementación debe reutilizar, en la medida de lo posible, los mecanismos de indexación y consulta disponibles en la plataforma, o bien extenderlos de forma controlada cuando resulte necesario.
+    \item El sistema debe garantizar tiempos de respuesta adecuados en las consultas realizadas por el usuario, de modo que la experiencia de uso no se vea degradada por demoras excesivas en la generación de resultados.
+    \item El rendimiento del sistema debe mantenerse estable ante un incremento razonable del volumen de datos almacenados en el catálogo, asegurando que la escalabilidad de la solución permita su evolución futura.
+    \item El sistema debe soportar la ejecución concurrente de múltiples consultas sin producir errores, bloqueos o degradaciones significativas del rendimiento.
+    \item La solución implementada deberá minimizar el impacto en los recursos del servidor, evitando sobrecargas innecesarias y optimizando las consultas realizadas a la base de datos.
+\end{enumerate}
 
 % **************************************************
 % * Requisitos no funcionales
