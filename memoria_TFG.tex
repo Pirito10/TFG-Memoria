@@ -110,6 +110,23 @@ Se entiende por requisito funcional aquel que describe las capacidades concretas
 % * Sistema de filtrado
 % **************************************************
 \subsubsection{Sistema de filtrado}
+\begin{enumerate}
+    \item El sistema debe permitir la aplicación de filtros sobre el conjunto de resultados obtenidos, posibilitando la restricción de los cursos mostrados en función de distintos atributos del modelo de datos.
+
+    \item Los filtros deberán contemplar, al menos, aquellos campos estructurados que resulten relevantes para la consulta de los usuarios, tales como titulación, área de conocimiento, idioma de impartición, número de créditos, modalidad u otros atributos disponibles en el catálogo.
+
+    \item El sistema debe permitir la combinación simultánea de múltiples filtros, de manera que el usuario pueda refinar progresivamente los resultados mediante criterios acumulativos.
+
+    \item La aplicación o modificación de filtros no deberá generar inconsistencias en los resultados mostrados, garantizando que el conjunto final de cursos cumpla todos los criterios activos en cada momento.
+
+    \item El sistema debe actualizar los resultados de forma coherente tras la activación o desactivación de filtros, manteniendo una experiencia de usuario fluida y evitando recargas innecesarias que afecten negativamente a la interacción.
+
+    \item El sistema debe permitir que los filtros sean dinámicos y adaptativos al conjunto de datos disponible, evitando mostrar opciones de filtrado que no correspondan con resultados existentes.
+
+    \item El mecanismo de filtrado deberá integrarse de forma consistente con el sistema de búsqueda, permitiendo que ambos procesos actúen de manera complementaria, de forma que la consulta textual y los criterios estructurados puedan aplicarse conjuntamente.
+
+    \item El diseño del sistema de filtrado debe contemplar la posibilidad de ampliación futura, permitiendo la incorporación de nuevos criterios sin necesidad de rediseñar la arquitectura principal.
+\end{enumerate}
 
 % **************************************************
 % * Integración y rendimiento
