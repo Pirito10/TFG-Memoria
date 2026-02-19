@@ -52,89 +52,44 @@ A medida que aumenta el tamaño y la complejidad de los repositorios, la experie
 
 Por ello, el diseño e implementación de estrategias avanzadas de búsqueda y filtrado constituye un elemento clave en cualquier sistema de información orientado al usuario final, especialmente cuando se persigue facilitar el acceso eficiente a contenidos estructurados y mejorar la usabilidad global de la plataforma.
 
-\subsection{Objetivos}
-Descripción dos obxectivos do TFG.
+\subsection{Contexto del proyecto}
+El proyecto DACEM (Digitising Academic Catalogues for Enhanced Mobility) \cite{dacem}, aprobado en la convocatoria 2023 del programa Erasmus+ para Asociaciones Estratégicas en Educación Superior (código de proyecto 2023-1-ES01-KA220-HED-000160344), tiene como finalidad el desarrollo de una plataforma de catálogo de cursos dirigida a instituciones educativas europeas. Su objetivo principal es ofrecer un sistema que permita publicar y mantener información actualizada sobre titulaciones y asignaturas de forma accesible, estructurada e interoperable, facilitando así los procesos de movilidad académica internacional.
 
-A Figura \ref{fig:exemplo} é un exemplo de como incorporar unha figura.
+El sistema de información asociado a dicha plataforma se fundamenta en tecnologías de software libre y está concebido para poder desplegarse tanto en entornos locales como en infraestructuras en la nube. Más allá del almacenamiento estructurado de datos académicos, el correcto funcionamiento del sistema depende de su capacidad para gestionar, organizar y recuperar la información de forma eficiente. En este contexto, los mecanismos de búsqueda y filtrado desempeñan un papel esencial, ya que constituyen el principal medio de interacción entre el usuario y el repositorio de cursos. La calidad de estos mecanismos condiciona directamente la usabilidad del sistema, la precisión de los resultados obtenidos y la experiencia global de navegación.
 
-\begin{figure}[htb!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/logo_uvigo.pdf}
-    \caption{Figura de exemplo}
-    \label{fig:exemplo}
-\end{figure}
+\subsection{Motivación}
+Uno de los retos fundamentales en los sistemas de información que gestionan grandes volúmenes de datos estructurados no reside únicamente en su almacenamiento, sino en la forma en que estos datos son recuperados y presentados al usuario. A medida que un repositorio crece en número de elementos y en complejidad de atributos, los mecanismos de búsqueda simples basados en coincidencias textuales directas pueden resultar insuficientes para ofrecer resultados relevantes y ajustados a las necesidades reales de consulta.
 
-\subsection{Metodoloxía}
-Metodoloxía seguida
+Esta problemática es especialmente significativa en entornos donde los datos presentan múltiples dimensiones descriptivas —como titulaciones, asignaturas, áreas de conocimiento, idiomas, créditos o modalidades— y donde el usuario puede tener criterios de búsqueda diversos y combinados. La ausencia de mecanismos avanzados de filtrado y refinamiento progresivo limita la capacidad del sistema para adaptarse a diferentes perfiles de usuario y escenarios de consulta, reduciendo la eficiencia en la localización de información pertinente.
 
-\section{Situación actual}
-Análise de necesidades e estudio do estado da arte.
+En el ámbito actual del desarrollo de aplicaciones web y sistemas de gestión de contenidos, las tendencias apuntan hacia la implementación de motores de búsqueda más sofisticados, capaces de indexar múltiples campos, ponderar resultados según relevancia, incorporar criterios de filtrado dinámico y mejorar la experiencia de usuario mediante interfaces intuitivas. Estas soluciones no solo optimizan el acceso a la información, sino que contribuyen a una mayor usabilidad y aprovechamiento del sistema en su conjunto.
 
-O Cadro \ref{table:exemplo} mostra un exemplo de táboa (existen moitos máis estilos e contornos).
+El presente Trabajo Fin de Grado se enmarca en este contexto, proponiendo el diseño y desarrollo de una mejora en los mecanismos de búsqueda y filtrado del catálogo de cursos de la plataforma DACEM. El objetivo es evolucionar desde un sistema de coincidencia textual básica hacia una solución más flexible y precisa, alineada con las buenas prácticas actuales en recuperación de información y desarrollo web, empleando tecnologías abiertas e integradas en el entorno existente.
 
-\begin{table}[h!]
-    \caption{Tabla de ejemplo}
-    \label{table:exemplo}
-    \centering
-    \begin{tabular}{ |p{6cm}|p{4cm}|p{4cm}|  }
-        \hline
-        \multicolumn{3}{|c|}{Country List}                         \\
-        \hline
-        Country Name or Area Name & ISO ALPHA 2 Code & ISO ALPHA 3 \\
-        \hline
-        Afghanistan               & AF               & AFG         \\
-        Aland Islands             & AX               & ALA         \\
-        Albania                   & AL               & ALB         \\
-        Algeria                   & DZ               & DZA         \\
-        American Samoa            & AS               & ASM         \\
-        Andorra                   & AD               & AND         \\
-        Angola                    & AO               & AGO         \\
-        \hline
-    \end{tabular}
-\end{table}
+\section{Objetivos y requisitos}
+El presente trabajo se centra en la mejora de los mecanismos de búsqueda y filtrado del catálogo de cursos desarrollado en el marco del proyecto DACEM. A diferencia de otros desarrollos orientados a la recopilación o estructuración de datos, este proyecto aborda la fase de recuperación y presentación de la información, poniendo el foco en la interacción entre el usuario y el sistema.
+
+El objetivo principal consiste en analizar las limitaciones del sistema actual de consulta e implementar una solución que permita mejorar la precisión, flexibilidad y usabilidad de los resultados obtenidos. Para ello, se definen a continuación los requisitos funcionales y no funcionales que deben guiar el diseño e implementación de la propuesta.
+
+Se entiende por requisito funcional aquel que describe las capacidades concretas que debe ofrecer el sistema, mientras que los requisitos no funcionales establecen condiciones relativas a su comportamiento, rendimiento, integración y mantenibilidad, sin definir directamente nuevas funcionalidades.
+
+\subsection{Requisitos funcionales}
+
+\subsubsection{Sistema de búsqueda}
+
+\subsubsection{Sistema de filtrado}
+
+\subsubsection{Integración y rendimiento}
+
+\subsection{Requisitos no funcionales}
+
+% ! TODO
 
 \section{Diseño}
-Decisións técnicas tomadas, incluíndo o uso de estándares ou normativas ou xustificando a súa ausencia.
 
-O Listado \ref{listado:exemplo} mostra un ejemplo de código Python.
-
-\begin{lstlisting}[language=Python, caption=Ejemplo en Python, label=listado:exemplo]
-import numpy as np
-    
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
-    
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1) 
-
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
-                
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
-                
-                VT = np.zeros((n*m,1), int)
-    
-    return M
-\end{lstlisting}
-
-\section{Resultados}
-Resultados acadados, xustificando os motivos polos que non se poido lograr a consecución de tódolos obxectivos (de ser o caso).
+\section{Desarrollo}
 
 \section{Conclusiones}
-Discusión e conclusións. Valorando, de ser o caso, o impacto en aspectos de responsabilidade legal, ética e profesional relacionados co TFG (por exemplo, aspectos relacionados coa privacidade, a seguridade, etc.).
 
 % **************************************************
 % * Bibliografía
@@ -149,7 +104,6 @@ Discusión e conclusións. Valorando, de ser o caso, o impacto en aspectos de re
 
 \clearpage
 \appendix
-\section{Anexos técnicos}
-Anexos técnicos que incorporen información adicional para calquera dos epígrafes anteriores ou incorporando aspectos novos que teñan relevancia para o traballo realizado (por exemplo, apartados propios das normas UNE 157001:2014 e UNE-ISO 21500:2013, se procede).
+\section{Anexos}
 
 \end{document}
