@@ -90,6 +90,21 @@ Se entiende por requisito funcional aquel que describe las capacidades concretas
 % * Sistema de búsqueda
 % **************************************************
 \subsubsection{Sistema de búsqueda}
+\begin{enumerate}
+    \item El sistema debe permitir la realización de búsquedas textuales sobre el catálogo de cursos a partir de una cadena de consulta introducida por el usuario.
+
+    \item La búsqueda no debe limitarse exclusivamente al título del curso, sino que deberá contemplar múltiples campos relevantes del modelo de datos, tales como descripción, área de conocimiento, titulación asociada u otros atributos significativos que formen parte de la información estructurada del catálogo.
+
+    \item El sistema debe soportar coincidencias parciales y no estrictamente literales, permitiendo la localización de resultados aun cuando la consulta no coincida exactamente con el texto almacenado. En este sentido, se deberá contemplar la normalización de mayúsculas y minúsculas y, en su caso, la gestión de caracteres acentuados.
+
+    \item El sistema deberá ordenar los resultados de búsqueda según un criterio de relevancia, de manera que los elementos más pertinentes en relación con la consulta aparezcan en las primeras posiciones.
+
+    \item El sistema debe garantizar que las búsquedas con consultas vacías o ambiguas no provoquen errores ni comportamientos inesperados, definiendo un comportamiento consistente en estos casos (por ejemplo, mostrando todos los resultados o solicitando una consulta válida).
+
+    \item El sistema deberá integrarse con el modelo de datos existente sin alterar su estructura fundamental, reutilizando en la medida de lo posible los mecanismos de indexación y consulta proporcionados por la plataforma.
+
+    \item El sistema debe permitir la extensión futura del mecanismo de búsqueda, de forma que puedan incorporarse nuevos campos o criterios sin requerir una reestructuración completa de la solución implementada.
+\end{enumerate}
 
 % **************************************************
 % * Sistema de filtrado
