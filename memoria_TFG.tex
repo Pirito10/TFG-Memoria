@@ -13,13 +13,13 @@
 % **************************************************
 % * Idioma y paquete de formato
 % **************************************************
-\usepackage[spanish]{babel}
+\usepackage[galician]{babel}
 \usepackage{tfgteleco}
 
 % **************************************************
 % * Datos para la portada del TFG
 % **************************************************
-\title{Diseño y desarrollo de una funcionalidad de búsqueda y filtrado para un catálogo de cursos}
+\title{Deseño e desarrollo de unha funcionalidade de busca e filtrado para un catálogo de cursos}
 \author{Aarón Riveiro Vilar}
 \titores{Manuel Caeiro Rodríguez}
 \curso{2025/2026}
@@ -44,66 +44,66 @@
 % **************************************************
 % * Introducción
 % **************************************************
-\section{Introducción}
-En los últimos años, el crecimiento sostenido de los sistemas de información digitales ha dado lugar a repositorios con volúmenes de datos cada vez mayores y más heterogéneos. En este contexto, la mera disponibilidad de la información ya no resulta suficiente: es necesario dotar a los sistemas de mecanismos eficaces que permitan localizar, filtrar y presentar los datos de forma relevante para el usuario. La disciplina de la recuperación de información (Information Retrieval) estudia precisamente los métodos y modelos que permiten acceder de manera eficiente a grandes colecciones de documentos, maximizando la relevancia de los resultados ofrecidos frente a una consulta determinada \cite{information_retrieval}.
+\section{Introdución}
+Nos últimos anos, o crecemento sostido dos sistemas de información dixitais deu lugar a repositorios con volumes de datos cada vez maiores e máis heteroxéneos. Neste contexto, a mera dispoñibilidade da información xa non resulta suficiente: é necesario dotar os sistemas de mecanismos eficaces que permitan localizar, filtrar e presentar os datos de forma relevante para o usuario. A disciplina da recuperación de información (Information Retrieval) estuda precisamente os métodos e modelos que permiten acceder de maneira eficiente a grandes coleccións de documentos, maximizando a relevancia dos resultados ofrecidos fronte a unha consulta determinada \cite{information_retrieval}.
 
-A medida que aumenta el tamaño y la complejidad de los repositorios, la experiencia de usuario pasa a depender en gran medida de la calidad del sistema de búsqueda y filtrado. No solo es importante la rapidez de respuesta, sino también la precisión y exhaustividad de los resultados, así como la capacidad del sistema para interpretar la intención de búsqueda del usuario y ofrecer mecanismos de refinamiento progresivo mediante filtros, facetas o criterios adicionales \cite{retrieval_accuracy}. Un sistema de búsqueda limitado a coincidencias literales sobre un único campo de texto puede resultar insuficiente en entornos donde los datos presentan múltiples dimensiones y atributos relevantes.
+A medida que aumenta o tamaño e a complexidade dos repositorios, a experiencia de usuario pasa a depender en grande medida da calidade do sistema de busca e filtrado. Non só é importante a rapidez de resposta, senón tamén a precisión e exhaustividade dos resultados, así como a capacidade do sistema para interpretar a intención de busca do usuario e ofrecer mecanismos de refinamento progresivo mediante filtros, facetas ou criterios adicionais \cite{retrieval_accuracy}. Un sistema de busca limitado a coincidencias literais sobre un único campo de texto pode resultar insuficiente en contornas nas que os datos presentan múltiples dimensións e atributos relevantes.
 
-Por ello, el diseño e implementación de estrategias avanzadas de búsqueda y filtrado constituye un elemento clave en cualquier sistema de información orientado al usuario final, especialmente cuando se persigue facilitar el acceso eficiente a contenidos estructurados y mejorar la usabilidad global de la plataforma.
+Por iso, o deseño e a implementación de estratexias avanzadas de busca e filtrado constitúen un elemento clave en calquera sistema de información orientado ao usuario final, especialmente cando se pretende facilitar o acceso eficiente a contidos estruturados e mellorar a usabilidade global da plataforma.
 
 % **************************************************
 % * Contexto
 % **************************************************
-\subsection{Contexto del proyecto}
-El proyecto DACEM (Digitising Academic Catalogues for Enhanced Mobility) \cite{dacem}, aprobado en la convocatoria 2023 del programa Erasmus+ para Asociaciones Estratégicas en Educación Superior (código de proyecto 2023-1-ES01-KA220-HED-000160344), tiene como finalidad el desarrollo de una plataforma de catálogo de cursos dirigida a instituciones educativas europeas. Su objetivo principal es ofrecer un sistema que permita publicar y mantener información actualizada sobre titulaciones y asignaturas de forma accesible, estructurada e interoperable, facilitando así los procesos de movilidad académica internacional.
+\subsection{Contexto do proxecto}
+O proxecto DACEM (Digitising Academic Catalogues for Enhanced Mobility) \cite{dacem}, aprobado na convocatoria 2023 do programa Erasmus+ para Asociacións Estratéxicas en Educación Superior (código de proxecto 2023-1-ES01-KA220-HED-000160344), ten como finalidade o desenvolvemento dunha plataforma de catálogo de cursos dirixida a institucións educativas europeas. O seu obxectivo principal é ofrecer un sistema que permita publicar e manter información actualizada sobre titulacións e materias de forma accesible, estruturada e interoperable, facilitando así os procesos de mobilidade académica internacional.
 
-El sistema de información asociado a dicha plataforma se fundamenta en tecnologías de software libre y está concebido para poder desplegarse tanto en entornos locales como en infraestructuras en la nube. Más allá del almacenamiento estructurado de datos académicos, el correcto funcionamiento del sistema depende de su capacidad para gestionar, organizar y recuperar la información de forma eficiente. En este contexto, los mecanismos de búsqueda y filtrado desempeñan un papel esencial, ya que constituyen el principal medio de interacción entre el usuario y el repositorio de cursos. La calidad de estos mecanismos condiciona directamente la usabilidad del sistema, la precisión de los resultados obtenidos y la experiencia global de navegación.
+O sistema de información asociado a esta plataforma está fundamentado en tecnoloxías de software libre e está concibido para poder despregarse tanto en contornas locais como en infraestruturas na nube. Máis alá do almacenamento estruturado de datos académicos, o correcto funcionamento do sistema depende da súa capacidade para xestionar, organizar e recuperar a información de maneira eficiente. Neste contexto, os mecanismos de busca e filtrado desempeñan un papel esencial, xa que constitúen o principal medio de interacción entre o usuario e o repositorio de cursos. A calidade destes mecanismos condiciona directamente a usabilidade do sistema, a precisión dos resultados obtidos e a experiencia global de navegación.
 
 % **************************************************
 % * Motivación
 % **************************************************
 \subsection{Motivación}
-Uno de los retos fundamentales en los sistemas de información que gestionan grandes volúmenes de datos estructurados no reside únicamente en su almacenamiento, sino en la forma en que estos datos son recuperados y presentados al usuario. A medida que un repositorio crece en número de elementos y en complejidad de atributos, los mecanismos de búsqueda simples basados en coincidencias textuales directas pueden resultar insuficientes para ofrecer resultados relevantes y ajustados a las necesidades reales de consulta.
+Un dos retos fundamentais nos sistemas de información que xestionan grandes volumes de datos estruturados non reside unicamente no seu almacenamento, senón na forma en que estes datos son recuperados e presentados ao usuario. A medida que un repositorio medra en número de elementos e en complexidade de atributos, os mecanismos de busca simples baseados en coincidencias textuais directas poden resultar insuficientes para ofrecer resultados relevantes e axustados ás necesidades reais de consulta.
 
-Esta problemática es especialmente significativa en entornos donde los datos presentan múltiples dimensiones descriptivas —como titulaciones, asignaturas, áreas de conocimiento, idiomas, créditos o modalidades— y donde el usuario puede tener criterios de búsqueda diversos y combinados. La ausencia de mecanismos avanzados de filtrado y refinamiento progresivo limita la capacidad del sistema para adaptarse a diferentes perfiles de usuario y escenarios de consulta, reduciendo la eficiencia en la localización de información pertinente.
+Esta problemática é especialmente significativa en contornas nas que os datos presentan múltiples dimensións descritivas —como titulacións, materias, áreas de coñecemento, idiomas, créditos ou modalidades— e nas que o usuario pode ter criterios de busca diversos e combinados. A ausencia de mecanismos avanzados de filtrado e refinamento progresivo limita a capacidade do sistema para adaptarse a diferentes perfís de usuario e escenarios de consulta, reducindo a eficiencia na localización de información pertinente.
 
-En el ámbito actual del desarrollo de aplicaciones web y sistemas de gestión de contenidos, las tendencias apuntan hacia la implementación de motores de búsqueda más sofisticados, capaces de indexar múltiples campos, ponderar resultados según relevancia, incorporar criterios de filtrado dinámico y mejorar la experiencia de usuario mediante interfaces intuitivas. Estas soluciones no solo optimizan el acceso a la información, sino que contribuyen a una mayor usabilidad y aprovechamiento del sistema en su conjunto.
+No ámbito actual do desenvolvemento de aplicacións web e sistemas de xestión de contidos, as tendencias apuntan cara á implementación de motores de busca máis sofisticados, capaces de indexar múltiples campos, ponderar resultados segundo a relevancia, incorporar criterios de filtrado dinámico e mellorar a experiencia de usuario mediante interfaces intuitivas. Estas solucións non só optimizan o acceso á información, senón que contribúen a unha maior usabilidade e aproveitamento do sistema no seu conxunto.
 
-El presente Trabajo Fin de Grado se enmarca en este contexto, proponiendo el diseño y desarrollo de una mejora en los mecanismos de búsqueda y filtrado del catálogo de cursos de la plataforma DACEM. El objetivo es evolucionar desde un sistema de coincidencia textual básica hacia una solución más flexible y precisa, alineada con las buenas prácticas actuales en recuperación de información y desarrollo web, empleando tecnologías abiertas e integradas en el entorno existente.
+O presente Traballo de Fin de Grao enmárcase neste contexto, propoñendo o deseño e desenvolvemento dunha mellora nos mecanismos de busca e filtrado do catálogo de cursos da plataforma DACEM. O obxectivo é evolucionar dende un sistema de coincidencia textual básica cara a unha solución máis flexible e precisa, aliñada coas boas prácticas actuais en recuperación de información e desenvolvemento web, empregando tecnoloxías abertas e integradas na contorna existente.
 
 % **************************************************
 % * Objetivos y requisitos
 % **************************************************
-\section{Objetivos y requisitos}
-El presente trabajo se centra en la mejora de los mecanismos de búsqueda y filtrado del catálogo de cursos desarrollado en el marco del proyecto DACEM. A diferencia de otros desarrollos orientados a la recopilación o estructuración de datos, este proyecto aborda la fase de recuperación y presentación de la información, poniendo el foco en la interacción entre el usuario y el sistema.
+\section{Obxectivos e requisitos}
+O presente traballo céntrase na mellora dos mecanismos de busca e filtrado do catálogo de cursos desenvolvido no marco do proxecto DACEM. A diferenza doutros desenvolvementos orientados á recompilación ou estruturación de datos, este proxecto aborda a fase de recuperación e presentación da información, poñendo o foco na interacción entre o usuario e o sistema.
 
-El objetivo principal consiste en analizar las limitaciones del sistema actual de consulta e implementar una solución que permita mejorar la precisión, flexibilidad y usabilidad de los resultados obtenidos. Para ello, se definen a continuación los requisitos funcionales y no funcionales que deben guiar el diseño e implementación de la propuesta.
+O obxectivo principal consiste en analizar as limitacións do sistema actual de consulta e implementar unha solución que permita mellorar a precisión, flexibilidade e usabilidade dos resultados obtidos. Para iso, defínense a continuación os requisitos funcionais e non funcionais que deben guiar o deseño e a implementación da proposta.
 
-Se entiende por requisito funcional aquel que describe las capacidades concretas que debe ofrecer el sistema, mientras que los requisitos no funcionales establecen condiciones relativas a su comportamiento, rendimiento, integración y mantenibilidad, sin definir directamente nuevas funcionalidades.
+Enténdese por requisito funcional aquel que describe as capacidades concretas que debe ofrecer o sistema, mentres que os requisitos non funcionais establecen condicións relativas ao seu comportamento, rendemento, integración e manexabilidade, sen definir directamente novas funcionalidades.
 
 % **************************************************
 % * Requisitos funcionales
 % **************************************************
-\subsection{Requisitos funcionales}
+\subsection{Requisitos funcionais}
 
 % **************************************************
 % * Sistema de búsqueda
 % **************************************************
-\subsubsection{Sistema de búsqueda}
+\subsubsection{Sistema de busca}
 \begin{enumerate}
-    \item El sistema debe permitir la realización de búsquedas textuales sobre el catálogo de cursos a partir de una cadena de consulta introducida por el usuario.
+    \item O sistema debe permitir a realización de buscas textuais sobre o catálogo de cursos a partir dunha cadea de consulta introducida polo usuario.
 
-    \item La búsqueda no debe limitarse exclusivamente al título del curso, sino que deberá contemplar múltiples campos relevantes del modelo de datos, tales como descripción, área de conocimiento, titulación asociada u otros atributos significativos que formen parte de la información estructurada del catálogo.
+    \item A busca non debe limitarse exclusivamente ao título do curso, senón que deberá contemplar múltiples campos relevantes do modelo de datos, tales como a descrición, a área de coñecemento, a titulación asociada ou outros atributos significativos que formen parte da información estruturada do catálogo.
 
-    \item El sistema debe soportar coincidencias parciales y no estrictamente literales, permitiendo la localización de resultados aun cuando la consulta no coincida exactamente con el texto almacenado. En este sentido, se deberá contemplar la normalización de mayúsculas y minúsculas y, en su caso, la gestión de caracteres acentuados.
+    \item O sistema debe soportar coincidencias parciais e non estritamente literais, permitindo a localización de resultados mesmo cando a consulta non coincida exactamente co texto almacenado. Neste sentido, deberase contemplar a normalización de maiúsculas e minúsculas e, no seu caso, a xestión de caracteres acentuados.
 
-    \item El sistema deberá ordenar los resultados de búsqueda según un criterio de relevancia, de manera que los elementos más pertinentes en relación con la consulta aparezcan en las primeras posiciones.
+    \item O sistema deberá ordenar os resultados da busca segundo un criterio de relevancia, de maneira que os elementos máis pertinentes en relación coa consulta aparezan nas primeiras posicións.
 
-    \item El sistema debe garantizar que las búsquedas con consultas vacías o ambiguas no provoquen errores ni comportamientos inesperados, definiendo un comportamiento consistente en estos casos (por ejemplo, mostrando todos los resultados o solicitando una consulta válida).
+    \item O sistema debe garantir que as buscas con consultas baleiras ou ambiguas non provoquen erros nin comportamentos inesperados, definindo un comportamento consistente nestes casos (por exemplo, amosando todos os resultados ou solicitando unha consulta válida).
 
-    \item El sistema deberá integrarse con el modelo de datos existente sin alterar su estructura fundamental, reutilizando en la medida de lo posible los mecanismos de indexación y consulta proporcionados por la plataforma.
+    \item O sistema deberá integrarse co modelo de datos existente sen alterar a súa estrutura fundamental, reutilizando na medida do posible os mecanismos de indexación e consulta proporcionados pola plataforma.
 
-    \item El sistema debe permitir la extensión futura del mecanismo de búsqueda, de forma que puedan incorporarse nuevos campos o criterios sin requerir una reestructuración completa de la solución implementada.
+    \item O sistema debe permitir a extensión futura do mecanismo de busca, de maneira que poidan incorporarse novos campos ou criterios sen requirir unha reestruturación completa da solución implementada.
 \end{enumerate}
 
 % **************************************************
@@ -111,49 +111,61 @@ Se entiende por requisito funcional aquel que describe las capacidades concretas
 % **************************************************
 \subsubsection{Sistema de filtrado}
 \begin{enumerate}
-    \item El sistema debe permitir la aplicación de filtros sobre el conjunto de resultados obtenidos, posibilitando la restricción de los cursos mostrados en función de distintos atributos del modelo de datos.
+    \item O sistema debe permitir a aplicación de filtros sobre o conxunto de resultados obtidos, posibilitando a restrición dos cursos amosados en función de distintos atributos do modelo de datos.
 
-    \item Los filtros deberán contemplar, al menos, aquellos campos estructurados que resulten relevantes para la consulta de los usuarios, tales como titulación, área de conocimiento, idioma de impartición, número de créditos, modalidad u otros atributos disponibles en el catálogo.
+    \item Os filtros deberán contemplar, cando menos, aqueles campos estruturados que resulten relevantes para a consulta dos usuarios, tales como titulación, área de coñecemento, idioma de impartición, número de créditos, modalidade ou outros atributos dispoñibles no catálogo.
 
-    \item El sistema debe permitir la combinación simultánea de múltiples filtros, de manera que el usuario pueda refinar progresivamente los resultados mediante criterios acumulativos.
+    \item O sistema debe permitir a combinación simultánea de múltiples filtros, de maneira que o usuario poida refinar progresivamente os resultados mediante criterios acumulativos.
 
-    \item La aplicación o modificación de filtros no deberá generar inconsistencias en los resultados mostrados, garantizando que el conjunto final de cursos cumpla todos los criterios activos en cada momento.
+    \item A aplicación ou modificación de filtros non deberá xerar inconsistencias nos resultados amosados, garantindo que o conxunto final de cursos cumpra todos os criterios activos en cada momento.
 
-    \item El sistema debe actualizar los resultados de forma coherente tras la activación o desactivación de filtros, manteniendo una experiencia de usuario fluida y evitando recargas innecesarias que afecten negativamente a la interacción.
+    \item O sistema debe actualizar os resultados de forma coherente tras a activación ou desactivación de filtros, mantendo unha experiencia de usuario fluída e evitando recargas innecesarias que afecten negativamente á interacción.
 
-    \item El sistema debe permitir que los filtros sean dinámicos y adaptativos al conjunto de datos disponible, evitando mostrar opciones de filtrado que no correspondan con resultados existentes.
+    \item O sistema debe permitir que os filtros sexan dinámicos e adaptativos ao conxunto de datos dispoñible, evitando amosar opcións de filtrado que non se correspondan con resultados existentes.
 
-    \item El mecanismo de filtrado deberá integrarse de forma consistente con el sistema de búsqueda, permitiendo que ambos procesos actúen de manera complementaria, de forma que la consulta textual y los criterios estructurados puedan aplicarse conjuntamente.
+    \item O mecanismo de filtrado deberá integrarse de forma consistente co sistema de busca, permitindo que ambos procesos actúen de maneira complementaria, de xeito que a consulta textual e os criterios estruturados poidan aplicarse conxuntamente.
 
-    \item El diseño del sistema de filtrado debe contemplar la posibilidad de ampliación futura, permitiendo la incorporación de nuevos criterios sin necesidad de rediseñar la arquitectura principal.
+    \item O deseño do sistema de filtrado debe contemplar a posibilidade de ampliación futura, permitindo a incorporación de novos criterios sen necesidade de redeseñar a arquitectura principal.
 \end{enumerate}
 
 % **************************************************
 % * Integración y rendimiento
 % **************************************************
-\subsubsection{Integración y rendimiento}
+\subsubsection{Integración e rendemento}
 \begin{enumerate}
-    \item La solución propuesta debe integrarse con la plataforma existente sin alterar la estructura fundamental del modelo de datos ni comprometer el funcionamiento del resto de funcionalidades del sistema.
-    \item El sistema debe ser compatible con la arquitectura actual basada en Drupal y con los módulos utilizados para la gestión del contenido, garantizando que la mejora del mecanismo de búsqueda y filtrado no requiera una reimplementación completa del entorno.
-    \item La implementación debe reutilizar, en la medida de lo posible, los mecanismos de indexación y consulta disponibles en la plataforma, o bien extenderlos de forma controlada cuando resulte necesario.
-    \item El sistema debe garantizar tiempos de respuesta adecuados en las consultas realizadas por el usuario, de modo que la experiencia de uso no se vea degradada por demoras excesivas en la generación de resultados.
-    \item El rendimiento del sistema debe mantenerse estable ante un incremento razonable del volumen de datos almacenados en el catálogo, asegurando que la escalabilidad de la solución permita su evolución futura.
-    \item El sistema debe soportar la ejecución concurrente de múltiples consultas sin producir errores, bloqueos o degradaciones significativas del rendimiento.
-    \item La solución implementada deberá minimizar el impacto en los recursos del servidor, evitando sobrecargas innecesarias y optimizando las consultas realizadas a la base de datos.
+    \item A solución proposta debe integrarse coa plataforma existente sen alterar a estrutura fundamental do modelo de datos nin comprometer o funcionamento do resto de funcionalidades do sistema.
+
+    \item O sistema debe ser compatible coa arquitectura actual baseada en Drupal e cos módulos empregados para a xestión do contido, garantindo que a mellora do mecanismo de busca e filtrado non requira unha reimplementación completa da contorna.
+
+    \item A implementación debe reutilizar, na medida do posible, os mecanismos de indexación e consulta dispoñibles na plataforma, ou ben estendelos de forma controlada cando resulte necesario.
+
+    \item O sistema debe garantir tempos de resposta axeitados nas consultas realizadas polo usuario, de maneira que a experiencia de uso non se vexa degradada por demoras excesivas na xeración de resultados.
+
+    \item O rendemento do sistema debe manterse estable ante un incremento razoable do volume de datos almacenados no catálogo, asegurando que a escalabilidade da solución permita a súa evolución futura.
+
+    \item O sistema debe soportar a execución concorrente de múltiples consultas sen producir erros, bloqueos ou degradacións significativas do rendemento.
+
+    \item A solución implementada deberá minimizar o impacto nos recursos do servidor, evitando sobrecargas innecesarias e optimizando as consultas realizadas á base de datos.
 \end{enumerate}
 
 % **************************************************
 % * Requisitos no funcionales
 % **************************************************
-\subsection{Requisitos no funcionales}
+\subsection{Requisitos non funcionais}
 \begin{enumerate}
-    \item La solución debe estar fundamentada en tecnologías de uso libre y código abierto, manteniendo coherencia con los principios y la arquitectura general del proyecto DACEM.
-    \item El desarrollo debe garantizar la mantenibilidad del código, estructurando la implementación de forma modular y documentada para facilitar futuras modificaciones o ampliaciones.
-    \item La solución debe ser compatible con futuras actualizaciones de la plataforma y de los módulos utilizados, evitando dependencias que comprometan la evolución del sistema.
-    \item El sistema debe garantizar un comportamiento estable y predecible ante entradas incorrectas, consultas mal formadas o combinaciones de filtros no válidas, evitando errores visibles para el usuario final.
-    \item La interfaz de búsqueda y filtrado debe cumplir criterios básicos de usabilidad, asegurando que los mecanismos de interacción resulten intuitivos y coherentes con el diseño general de la plataforma.
-    \item La solución debe preservar la integridad de los datos existentes, garantizando que las mejoras introducidas en la capa de consulta no alteren la información almacenada ni su consistencia.
-    \item El diseño del sistema deberá contemplar su posible reutilización o adaptación en otros contextos similares, favoreciendo la portabilidad y la extensibilidad de la solución implementada.
+    \item A solución debe estar fundamentada en tecnoloxías de uso libre e código aberto, mantendo coherencia cos principios e coa arquitectura xeral do proxecto DACEM.
+
+    \item O desenvolvemento debe garantir a manexabilidade do código, estruturando a implementación de forma modular e documentada para facilitar futuras modificacións ou ampliacións.
+
+    \item A solución debe ser compatible con futuras actualizacións da plataforma e dos módulos empregados, evitando dependencias que comprometan a evolución do sistema.
+
+    \item O sistema debe garantir un comportamento estable e previsible ante entradas incorrectas, consultas mal formadas ou combinacións de filtros non válidas, evitando erros visibles para o usuario final.
+
+    \item A interface de busca e filtrado debe cumprir criterios básicos de usabilidade, asegurando que os mecanismos de interacción resulten intuitivos e coherentes co deseño xeral da plataforma.
+
+    \item A solución debe preservar a integridade dos datos existentes, garantindo que as melloras introducidas na capa de consulta non alteren a información almacenada nin a súa consistencia.
+
+    \item O deseño do sistema deberá contemplar a súa posible reutilización ou adaptación noutros contextos similares, favorecendo a portabilidade e a extensibilidade da solución implementada.
 \end{enumerate}
 
 % ! TODO
